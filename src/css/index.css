@@ -1,0 +1,58 @@
+body {
+  color: #222;
+  font-family: 'PT Serif', Georgia, Times, 'Times New Roman', serif;
+}
+
+a {
+  color: #1863a1;
+  transition: color 0.3s;
+}
+
+a:visited {
+  color: #751590;
+}
+.post-entry {
+  list-style-type: none;
+}
+
+.blog-index,
+.blog-post {
+  background: #f8f8f8 url('http://octopress.org/images/noise.png?1420306322') top left;
+}
+
+.post-entry  a[rel=bookmark] {
+  text-decoration: none;
+}
+
+.post-entry h1 {
+  margin-bottom: 3px;
+}
+
+.post-entry h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-entry h1 a:hover {
+  text-decoration: underline;
+  color: #0181eb
+}
+
+.post-entry .entry-summary p {
+  margin-bottom: 10px;
+}
+
+.post-entry .entry-readon {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.entry-date {
+  text-transform: uppercase
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #aaa;
+}
+
