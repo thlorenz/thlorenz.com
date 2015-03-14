@@ -11,7 +11,24 @@ asynchronous tasks, and call back with a result when all are done.
 
 Lets take the example of filtering files from multiple entries.
 
-{{ snippet: naive.js }}
+```js
+function filterFiles (entries, cb) {
+  var tasks = entries.length
+    , files = [];
+
+  if (tasks === 0) cb(null, []);
+
+  entries.forEach(function (entry) {
+    fs.stat(entry, function (err, stat) {
+      if (err) return cb(err);
+
+      if (stat.isFile()) files.push(entry);
+
+      if (--tasks === 0) cb(null, files);
+    });
+  });
+}
+```
 
 Unfortunately, if one of those file operations where to fail, we'd still kick off the remaining ones if they are queued.
 Additionally we will call back with an error multiple times if more than one fail. 
@@ -21,7 +38,27 @@ exactly once is preferred.
 
 We can use an `abort` flag to accomplish this, as shown in the below snippet.
 
-{{ snippet: better.js }}
+```js
+function filterFiles (entries, cb) {
+  var tasks = entries.length
+    , abort = false
+    , files = [];
+
+  if (tasks === 0) cb(null, []);
+
+  entries.forEach(function (entry) {
+    if (abort) return;
+    fs.stat(entry, function (err, stat) {
+      if (abort) return;
+      if (err) { abort = true; return cb(err); }
+
+      if (stat.isFile()) files.push(entry);
+
+      if (--tasks === 0) cb(null, files);
+    });
+  });
+}
+```
 
 If any of our `fs.stat` requests errors out, we set the abort flag and call back with an error (one time).
 

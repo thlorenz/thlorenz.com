@@ -90,7 +90,33 @@ We split a file it into separate lines and re-emit them one by one with number o
 
 Additionally we keep track of the number of lines and emit that information when the read stream ends.
 
-{{ snippet: through.js }}
+```js
+var through =  require('through')
+  , split   =  require('split')
+  , fs      =  require('fs');
+
+function count () {
+  var lines = 0
+    , nonEmptyLines = 0;
+
+  return through(
+    function write (data) {
+      lines++;
+      data.length && nonEmptyLines++;
+      this.emit('data', 'chars: ' + data.length + '\t' + data + '\n');
+    }
+  , function end () {
+      this.emit('data', 'total lines: ' + lines + ' | non empty lines: ' + nonEmptyLines);
+      this.emit('end');
+    }
+  );
+}
+
+fs.createReadStream(__filename, { encoding: 'utf-8' })
+  .pipe(split())
+  .pipe(count())
+  .pipe(process.stdout);
+```
 
 ##### Output:
 
@@ -152,7 +178,25 @@ total lines: 25 | non empty lines: 22
 
 Similar to above except here we filter out empty lines and don't emit the number of lines at the end.
 
-{{ snippet: map-stream.js }}
+```js
+var map   =  require('map-stream')
+  , split =  require('split')
+  , fs    =  require('fs');
+
+function count () {
+  return map(function (data, cb) {
+    // ignore empty lines
+    data.length ? 
+      cb(null, 'chars: ' + data.length + '\t' + data + '\n') : 
+      cb();
+  });
+}
+
+fs.createReadStream(__filename, { encoding: 'utf-8' })
+  .pipe(split())
+  .pipe(count())
+  .pipe(process.stdout);
+```
 
 ##### Output:
 
@@ -236,7 +280,25 @@ building blocks.
 
 Exact same as `map-stream` example above with same kind of output.
 
-{{ snippet: map-sync.js }}
+```js
+var mapSync =  require('event-stream').mapSync
+  , split   =  require('split')
+  , fs      =  require('fs');
+
+function count () {
+  return mapSync(function (data) {
+    // ignore empty lines
+    return data.length ? 
+      'chars: ' + data.length + '\t' + data + '\n' : 
+      undefined;
+  });
+}
+
+fs.createReadStream(__filename, { encoding: 'utf-8' })
+  .pipe(split())
+  .pipe(count())
+  .pipe(process.stdout);
+```
 
 ### Array/String operations
 
@@ -255,7 +317,16 @@ Exact same as `map-stream` example above with same kind of output.
 
 We first split the data into lines and then join them together, injecting an extra line each time.
 
-{{ snippet: join.js }}
+```js
+var join  =  require('event-stream').join
+  , split =  require('split')
+  , fs    =  require('fs');
+
+fs.createReadStream(__filename, { encoding: 'utf-8' })
+  .pipe(split())
+  .pipe(join('\n******\n'))
+  .pipe(process.stdout);
+```
 
 ##### Output:
 
@@ -281,7 +352,14 @@ var join  =  require('event-stream').join
 
 The below has the exact same effect as the above example for `join`.
 
-{{ snippet: replace.js }}
+```js
+var replace =  require('event-stream').replace
+  , fs    =  require('fs');
+
+fs.createReadStream(__filename, { encoding: 'utf-8' })
+  .pipe(replace('\n', '\n******\n'))
+  .pipe(process.stdout);
+```
 
 ### JSON converters 
 
@@ -317,7 +395,50 @@ most performant way with the smallest memory footprint possible.
 
 The comments should suffice to show what is going on in the code.
 
-{{ snippet: json.js }}
+```js
+var Stream    =  require('stream')
+  , es        =  require('event-stream');
+
+function objectStream () {
+  var s = new Stream()
+    , objects = 0;
+
+  var iv = setInterval(
+      function () {
+        s.emit('data', { id: objects, created: new Date() });
+        if (++objects === 3) {
+            s.emit('end');
+            clearInterval(iv);
+        }
+      }
+    , 20);
+  return s;
+}
+
+function tap () {
+  return es.through(
+    function write (data) {
+      console.log('\n' + data);
+      this.emit('data', data);
+    }
+  );
+}
+
+function padId () {
+  return es.mapSync(function (obj) {
+    obj.id = '000' + obj.id;
+    return obj;
+  });
+}
+
+objectStream()
+  .pipe(es.stringify())   // prepare for printing
+  .pipe(tap())            // print intermediate result
+  .pipe(es.parse())       // convert back to object
+  .pipe(padId())          // change it a bit
+  .pipe(es.stringify())   // prepare for printing
+  .pipe(process.stdout);  // print final result
+```
 
 ##### Output:
 
@@ -363,7 +484,17 @@ The comments should suffice to show what is going on in the code.
 
 Ten Squares shows how to use plain old callback to pass on data.
 
-{{ snippet: readable-squares.js }}
+```js
+var es = require('event-stream');
+
+function tenSquares (count, cb) {
+  return count < 10 ? cb(null, count * count) : this.emit('end');
+}
+
+es.readable(tenSquares)
+  .pipe(es.stringify())
+  .pipe(process.stdout);
+```
 
 ##### Output:
 
@@ -385,7 +516,24 @@ Three Cubes shows how to manually `stream.emit` the data and then invoke the cal
 
 Note how we can emit as many times as we like.
 
-{{ snippet: readable-cubes.js }}
+```js
+var es = require('event-stream');
+
+function threeCubes (count, cb) {
+  if (count < 3) {
+    this.emit('data', 'Cubing ' + count);
+    this.emit('data', count * count * count);
+    this.emit('data', 'OK');
+    cb();
+  } else {
+    this.emit('end');
+  }
+}
+
+es.readable(threeCubes)
+  .pipe(es.stringify())
+  .pipe(process.stdout);
+```
 
 ##### Output:
 
@@ -433,7 +581,28 @@ Note how we can emit as many times as we like.
 We use `readArray` to generate a stream of values which we the multiply by 10 and pipe into `writeArray` so we can
 validate the resulting array.
 
-{{ snippet: readArray.js }}
+```js
+var es = require('event-stream') ;
+
+function multiplyByTen (item, cb) {
+  // long running async operation ;)
+  setTimeout(
+      function () { cb(null, item * 10); }
+    , 50
+  );
+}
+
+function validate(err, array) {
+  if (!err && array.toString() === '0,10,20,30')
+   console.log('OK');
+  else 
+   console.log('NOT OK');
+}
+
+es.readArray([0, 1, 2, 3])        // generate data
+  .pipe(es.map(multiplyByTen))    // transform asynchronously 
+  .pipe(es.writeArray(validate)); // validate and print result
+```
 
 ##### Output:
 
@@ -452,7 +621,16 @@ OK
 
 #### Example
 
-{{ snippet: child.js }}
+```js
+var cp = require('child_process')
+  , fs = require('fs')
+  , es = require('event-stream');
+
+// same as: > cat thisfile | grep Stream
+fs.createReadStream(__filename)
+  .pipe(es.child(cp.exec('grep Stream')))
+  .pipe(process.stdout);
+```
 
 ##### Output:
 
@@ -479,7 +657,14 @@ fs.createReadStream(__filename)
 We emit an array of characters via `readArray` and use `wait` to aggregate them into one string so we can then surround
 it using `mapSync`.
 
-{{ snippet: wait.js }}
+```js
+var es = require('event-stream');
+
+es.readArray([ 'e', 'l', 'u', 'r', ' ', 's', 'm', 'a', 'e', 'r', 't', 's' ].reverse())
+  .pipe(es.wait())
+  .pipe(es.mapSync(function (data) { return '"' + data + '!"'; }))
+  .pipe(process.stdout);
+```
 
 ##### Output:
 

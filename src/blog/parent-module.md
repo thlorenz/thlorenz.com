@@ -52,11 +52,15 @@ Inside the `parent-module/snippets` folder you will find the sample files I use 
 
 First we create the module that will be the parent `foo.js`.
 
-{{ snippet: foo.js }}
+```js
+var bar = require('./bar');
+```
 
 The child, that is required by it, `bar.js` looks like this:
 
-{{ snippet: bar.js }}
+```js
+exports.module = module;
+```
 
 In order to play around with them, lets fire up replpad:
 
@@ -154,7 +158,12 @@ true
 As a final proof of concept lets run a
 script from the command line and make sure that it really has no parent. I created one in the `snippets` folder:
 
-{{ snippet: script.js }}
+```js
+var util = require('util');
+
+exports.hello = 'world';
+console.log(util.inspect(module, false, 5, true));
+```
 
 Here is the output when we run it:
 

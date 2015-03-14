@@ -281,13 +281,41 @@ repository](https://github.com/thlorenz/dog-example-getting-started).
 We need to require the necessary modules, among them director and dog, and initialize some variable that are global to
 our server module.
 
-{{ snippet: requires.js }}
+```js
+var director =  require('director')
+  , dog      =  require('dog')
+  , http     =  require('http')
+  , fs       =  require('fs')
+  , path     =  require('path')
+  , root     =  'http://localhost:3000/'
+  , posts    =  { }
+  , blogCss;
+```
 
 Before we can serve the blog, we need to initialize it properly via the `dog.provider`.
 
 Somewhat simplified and with error handling removed that comes down to the below snippet:
 
-{{ snippet: init-blog.js }}
+```js
+// Tell dog where our blog lives
+dog.provider.provideFrom(__dirname);
+
+// Keep css for our blog in memory
+dog.provider.concatenateStyles(function (err, css) {
+
+  blogCss = css;
+  
+  // Keep all posts (including rendered html) in memory as well
+  dog.provider.provideAll(function (err, metadata) {
+
+    metadata.forEach(function (meta) {
+      posts[meta.name] = meta;      
+    });
+
+    serveSite();
+  });
+});
+```
 
 As the comments explain, we first tell dog, where our blog lives and store the actual css and all posts provided by dog
 inside `blogCss` and `posts` respectively.
@@ -299,7 +327,59 @@ point is entirely contained in memory.
 
 **Note:** some functions like `wrapnServe` have been omitted for brevity, but are included in the [source](https://github.com/thlorenz/dog-example-getting-started/blob/master/app.js).
 
-{{ snippet: serve-site.js }}
+```js
+function serveSite () {
+
+  function getRoot () {
+    var postList = Object.keys(posts).map(function (name) {
+      return '<li><a href="/post/' + name + '">' + posts[name].title + '</a></li>';
+    });
+    wrapnServe(this.res, '<ul>' + postList + '</ul>');
+  }
+
+  function getPost (post) {
+    wrapnServe(this.res, posts[post].html);
+  }
+
+  function getImage (file) {
+    var res = this.res
+      , imgMime = path.extname(file).slice(1)
+      , imageFile = path.join(dog.provider.getImagesDir(), file);
+      
+    fs.readFile(imageFile, function (err, data) {
+      res.writeHead(200, { 'Content-Type': 'image/' + imgMime, 'Content-Length': data.length });
+      res.end(data); 
+    });
+  }
+
+  function getBlogCss () {
+    this.res.writeHead(200, { 'Content-Type': 'text/css', 'Content-Length': blogCss.length });
+    this.res.end(blogCss); 
+  }
+
+  var router = new director.http.Router({
+      '/'                :  { get :  getRoot }
+    , '/post/:post'      :  { get :  getPost }
+    , '/styles/blog.css' :  { get :  getBlogCss }
+    , '/images/:file'    :  { get :  getImage }
+  });
+
+  var server = http.createServer(function (req, res) {
+
+    router.dispatch(req, res, function (err) {
+      if (err) {
+        console.error('app', err);
+        res.writeHead(404);
+        res.end();
+      }
+    });
+  });
+
+  server.listen(3000, function () {
+    console.log('server listening at ', root);
+  });
+}
+```
 
 Assuming you implemented or downloaded the entire code inside 'app.js' you can now `node app` to start the server.
 
