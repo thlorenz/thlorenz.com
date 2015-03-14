@@ -18,6 +18,12 @@ a:visited {
 .blog-index,
 .blog-post {
   background: #f8f8f8 url('http://octopress.org/images/noise.png?1420306322') top left;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 5px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 
 .post-entry  a[rel=bookmark] {
@@ -56,3 +62,28 @@ a:visited {
   color: #aaa;
 }
 
+code, pre {
+  font-family: Menlo, Consolas, Courier;
+  font-size: 13px;
+}
+
+p code {
+  background: rgb(234, 229, 229); 
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+pre code {
+  line-height: 18px;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+blockquote {
+  font-size: 18px;
+  font-style: italic;
+}
+
+img {
+  max-width: 800px;
+}
