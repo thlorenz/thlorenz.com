@@ -7,9 +7,8 @@
   <meta name="description" content="{{ description }}">
 </head>
 <body>
-  <h1>{{ title }}</h1>
-  <p>{{ description }}</p>
-  <div class="blog-index">
+  {{> _sidebar }}
+  <section class="blog-index">
     <ul>
     {{#each collections.posts }}
       <li class="post-entry">
@@ -20,7 +19,7 @@
       </li>
     {{/each}}
     </ul>
-</div>
+</section>
 </body>
 </html>
 

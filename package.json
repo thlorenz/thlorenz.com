@@ -4,15 +4,15 @@
   "description": "Source of thlorenz.com",
   "main": "index.js",
   "scripts": {
-    "build": "node build"
+    "build": "node build",
+    "ln": "(cd ./build && rm -rf ./css && ln -s ../src/css)"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/thlorenz/thlorenz.com.git"
   },
   "homepage": "https://github.com/thlorenz/thlorenz.com",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "handlebars": "~3.0.0",
     "metalsmith": "~1.3.0",
