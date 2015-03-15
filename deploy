@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+built_site=$DIR/build
+thlorenz_github_io=$DIR/../thlorenz.github.io
+
+# Expects thlorenz.github.io repository to be checked out as sibling of this one
+
+rm -rf $thlorenz_github_io/*
+cp -R $built_site/* $thlorenz_github_io/
+
+
+( cd $thlorenz_github_io &&           \
+  git checkout CNAME &&               \
+  git add . &&                        \
+  git commit -m "automated deploy" && \
+  git push origin master
+)
+
+#vim: ft=bash
