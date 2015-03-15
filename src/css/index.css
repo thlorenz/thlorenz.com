@@ -37,7 +37,8 @@ a:visited {
     margin: 0;
   }
   body > article img {
-    max-width: 820px;
+    max-width: 100%;
+    padding-left: 10px;
   }
   body > nav {
     width  : 100%;
