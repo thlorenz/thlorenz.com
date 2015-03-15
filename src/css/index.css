@@ -126,10 +126,21 @@ a:visited {
 }
 
 
-.blog-index,
-.blog-post {
+body > section,
+body > article {
   background: #f8f8f8 url('http://octopress.org/images/noise.png?1420306322') top left;
   border-radius: 5px;
+}
+
+.about ul {
+  list-style: none;
+}
+.about ul .push-right {
+  margin-left: 10px;
+}
+
+.about li {
+  padding: 5px;
 }
 
 .post-entry  a[rel=bookmark] {

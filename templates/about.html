@@ -3,14 +3,12 @@
 <head>
   <title>thlorenz.com {{ title }}</title>
   <meta name="description" content="{{ title }} {{ tags }}">
-  <link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/monokai_sublime.css">
   {{> _head_common }}
 </head>
 
 <body>
   {{> _sidebar }}
-  <article class="blog-post">
-    <time class="entry-date">{{ date }}</time>
+  <article class="about">
     <h1>{{ title }}</h1>
     {{{ contents }}}
   </article>
