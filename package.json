@@ -4,7 +4,7 @@
   "description": "Source of thlorenz.com",
   "main": "index.js",
   "scripts": {
-    "deploy": "./deploy",
+    "deploy": "npm run build && ./deploy",
     "build": "node build",
     "ln": "(cd ./build && rm -rf ./css && ln -s ../src/css)"
   },
