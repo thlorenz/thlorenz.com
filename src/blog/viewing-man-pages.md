@@ -47,5 +47,3 @@ Note that the first time you use it there is a slight delay before the page is r
 comes up very quickly. I guess that some plugin is installed on first run to allow rendering postscript.
 
 ![pman](https://raw.github.com/thlorenz/thlorenz.com-blog/master/assets/images/pman.png)
-
-*Please feel free to ask questions and/or leave comments [relating to this post](https://github.com/thlorenz/thlorenz.com-blog/issues/5).*

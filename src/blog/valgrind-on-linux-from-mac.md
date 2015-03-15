@@ -120,5 +120,3 @@ install:
   - sudo apt-get -qq install valgrind
 script: make CC=$CC grind
 ```
-
-*Please feel free to ask questions and/or leave comments [relating to this post](https://github.com/thlorenz/thlorenz.com-blog/issues/7).*

@@ -11,9 +11,24 @@
   {{> _sidebar }}
   <article class="blog-post">
     <time class="entry-date">{{ date }}</time>
+    <a class="comments-link" href="#disqus_thread">Comments</a>
     <h1>{{ title }}</h1>
     {{{ contents }}}
+    <div id="disqus_thread"></div>
   </article>
+
+  <!-- discuss -->
+  <script type="text/javascript">
+    var disqus_shortname = 'thlorenz-com';
+    var disqus_title = '{{ title }}';
+    
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </body>
 </html>
 

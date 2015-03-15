@@ -26,8 +26,6 @@ and found that this is indeed possible. A short video tutorial will demonstrate,
 
 <iframe width="640" height="480" src="//www.youtube.com/embed/ODbdGAJtU38" frameborder="0" allowfullscreen></iframe>
 
-*Please feel free to ask questions and/or leave comments [relating to this post](https://github.com/thlorenz/thlorenz.com-blog/issues/6).*
-
 [Remy Sharp never has to leave devtools]:http://remysharp.com/2012/12/21/my-workflow-never-having-to-leave-devtools/
 [chrome-devtools-revolutions]:http://www.html5rocks.com/en/tutorials/developertools/revolutions2013/
 [addy osmani improving productivity with chrome dev tools]:https://www.youtube.com/watch?v=kVSo4buDAEE

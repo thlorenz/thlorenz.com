@@ -234,7 +234,3 @@ maps with inlined `sourcesContent` (see
 enough to make this step compatible with the browserify pipeline.
 
 Finally I hope that source maps are another good reason for you to **give browserify a try** if you haven't done so.
-
-    
-
-*Please feel free to  ask questions and/or leave comments [relating to this post](https://github.com/thlorenz/thlorenz.com-blog/issues/1).*

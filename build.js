@@ -11,24 +11,24 @@ var Handlebars  = require('handlebars')
   , lunr        = require('metalsmith-lunr')
 
 metalsmith(__dirname)
-    .metadata({ partials: {
-        _sidebar: '_sidebar'
-      , _head_common: '_head_common' }
-    })
-    .use(collections({
-        posts: {
-            pattern : 'blog/*.md'
-          , sortBy  : 'date'
-          , reverse : true
-        }
-    }))
-    .use(metallic())
-    .use(markdown())
-    .use(excerpts())
-    .use(permalinks({ pattern: 'blog/:title' }))
-    .use(templates({ engine: 'handlebars' }))
-    .use(lunr({ fields: { tags: 10, contents: 1 } }))
-    .build(onbuilt);
+  .metadata({ partials: {
+      _sidebar: '_sidebar'
+    , _head_common: '_head_common' }
+  })
+  .use(collections({
+      posts: {
+          pattern : 'blog/*.md'
+        , sortBy  : 'date'
+        , reverse : true
+      }
+  }))
+  .use(metallic())
+  .use(markdown())
+  .use(excerpts())
+  .use(permalinks({ pattern: 'blog/:title' }))
+  .use(templates({ engine: 'handlebars' }))
+  .use(lunr({ fields: { tags: 10, contents: 1 } }))
+  .build(onbuilt);
 
 function onbuilt(err) {
   if (err) return console.error(err);
