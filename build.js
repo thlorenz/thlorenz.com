@@ -11,7 +11,10 @@ var Handlebars  = require('handlebars')
   , lunr        = require('metalsmith-lunr')
 
 metalsmith(__dirname)
-    .metadata({ partials: { _sidebar: '_sidebar' } })
+    .metadata({ partials: {
+        _sidebar: '_sidebar'
+      , _head_common: '_head_common' }
+    })
     .use(collections({
         posts: {
             pattern : 'blog/*.md'
