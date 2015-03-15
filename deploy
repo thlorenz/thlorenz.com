@@ -12,7 +12,7 @@ cp -R $built_site/* $thlorenz_github_io/
 
 ( cd $thlorenz_github_io &&           \
   git checkout CNAME &&               \
-  git add . &&                        \
+  git add . --all &&                  \
   git commit -m "automated deploy" && \
   git push origin master
 )
