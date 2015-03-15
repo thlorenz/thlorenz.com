@@ -43,7 +43,11 @@ This information is communicated as follows:
 We will go through some code examples powered by
 [scriptie-talkie-embed](http://thlorenz.github.io/scriptie-talkie-embed/) and things should become a lot clearer: 
 
-{{ scriptie: variables++.js }}
+
+<textarea class="scriptie-talkie">
+var a = 1;
+var b = ++a;
+</textarea>
 
 On the left side you see the editor containing a short script, while the right side contains the result of
 scriptie-talkie running it.
@@ -72,7 +76,10 @@ which is indicated by `~ a: 2`.
 Since we talked about using scriptie-talkie as a learning aid, let's demonstrate the difference betweent `a++` and
 `++a`:
 
-{{ scriptie: ++variables.js }}
+<textarea class="scriptie-talkie">
+var a = 1;
+var b = a++;
+</textarea>
 
 Now, when executing line 2, `var b = ++a;` a is incremented before it is assigned to b and therefore assigned to `2`.
 
@@ -80,7 +87,13 @@ Now, when executing line 2, `var b = ++a;` a is incremented before it is assigne
 
 Lets look at an example that deals with objects instead of just primitive types:
 
-{{ scriptie: objects-returns.js }}
+<textarea class="scriptie-talkie">
+var car = { 
+    miles: 100
+  , price: 1000 
+};
+car.price++;
+</textarea>
 
 On lines 1-4 we create a car which is indicated via `+ car` on the right.
 
@@ -91,13 +104,26 @@ The `=> 1000` at the bottom indicates that the old price was returned (which is 
 
 We can use this fact in order to assign this value in order to keep track of the old price.
 
-{{ scriptie: objects-assign-returns.js }}
+<textarea class="scriptie-talkie">
+var car = { 
+    miles: 100
+  , price: 1000 
+};
+var oldPrice = car.price++;
+</textarea>
 
 ### Functions and side effects
 
 Lets add a function to drive the car:
 
-{{ scriptie: functions-sideeffects.js }}
+<textarea class="scriptie-talkie">
+var car = { miles: 100 , price: 1000 };
+
+function drive(miles) {
+  car.miles += miles;
+}
+drive(22);
+</textarea>
 
 Driving the car 22 miles had the side effect of increasing its mileage. This fact is clearly indicated by
 scriptie-talkie's output.
@@ -112,20 +138,38 @@ scriptie-talkie **enforces local** `use strict` i.e. inside a function, but **gl
 Basically only global strict violations that can be discovered by just parsing the code are shown and all others
 ignored:
 
-{{ scriptie: use-strict-global-working.js }}
+<textarea class="scriptie-talkie">
+'use strict';
+var o = { a: 1, a: 2 };
+</textarea>
 
 We see a warning in the editor, and the violation is clearly indicated on the right.
 
 In the next example the assignment on line 4 does not have any effect, since scriptie-talkie does respect that the object was frozen, but the strict
 violation is ignored:
 
-{{ scriptie: use-strict-global-notworking.js }}
+<textarea class="scriptie-talkie">
+'use strict';
+var o = { a: 1 };
+Object.freeze(o);
+o.a = 2;
+o
+</textarea>
 
 Therefore in order to make sure that `use strict` is taking effect, we wrap the questionable code inside a function and
 turn on strict mode inside it. This unfortunately has the disadvantage that  we don't see any intermediate results for
 every statement inside of the function since it is evaluated as one chunk:
 
-{{ scriptie: use-strict-local.js }}
+<textarea class="scriptie-talkie">
+var o = { a: 1 };
+Object.freeze(o);
+
+function f() {
+  'use strict';
+  o.a = 2;
+}
+f();
+</textarea>
 
 
 ## Using scriptie-talkie in your blog
@@ -146,7 +190,7 @@ scriptieTalkieEmbed();
 #### script tag 
 
 ```html
-<script type="text/javascript" src="https://github.com/thlorenz/scriptie-talkie-embed/raw/gh-pages/gh-pages/bundle.js"></script>
+<script type="text/javascript" src="https://raw.githubusercontent.com/thlorenz/scriptie-talkie-embed/gh-pages/gh-pages/bundle.js"></script>
 <script type="text/javascript">
   window.scriptieTalkieEmbed();
 </script>
@@ -206,4 +250,7 @@ Looking forward to seeing some scriptie-talkies in your blogs!
 If you are interested you can look at [the source of this
 blog](https://github.com/thlorenz/thlorenz.com-blog/tree/master/scriptie-talkie).
 
-*Please feel free to  ask questions and/or leave comments [relating to this post](https://github.com/thlorenz/thlorenz.com-blog/issues/2).*
+<script type="text/javascript" src="/js/scriptie-talkie.js"></script>
+<script type="text/javascript">
+  window.scriptieTalkieEmbed();
+</script>
