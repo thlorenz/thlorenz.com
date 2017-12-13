@@ -19,11 +19,15 @@ ALL of you make my day EVERY day 🌞, thank you❣️
 
 ## [Top Supporters $100/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205976)
 
-Be the first [top supporter](https://www.patreon.com/thlorenz) 💪
+Be the first [top supporter](https://www.patreon.com/bePatron?c=1367395&rid=2205976) 💪
+
+## [Rocking Supporters $50/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2211669)
+
+Be the first [rocking supporter](https://www.patreon.com/bePatron?c=1367395&rid=2211669) ✋
 
 ## [Awesome Supporters $25/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205960)
 
-Be the first [awesome supporter](https://www.patreon.com/thlorenz) 🙋
+Be the first [awesome supporter](https://www.patreon.com/bePatron?c=1367395&rid=2205960) 🙋
 
 ## [Supporters $10/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205924)
 
