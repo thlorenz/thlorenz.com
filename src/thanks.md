@@ -17,13 +17,25 @@ With their monthly donation they are showing their appreciation for my work so f
 
 ALL of you make my day EVERY day 🌞, thank you❣️
 
-## [Top Supporters $100/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205976)
+## [Platinum Sponsor $1000/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2213058)  🏆
 
-Be the first [top supporter](https://www.patreon.com/bePatron?c=1367395&rid=2205976) 💪
+Be the first [platinum sponsor](https://www.patreon.com/bePatron?c=1367395&rid=2213058) 💪 💪 💪
 
-## [Rocking Supporters $50/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2211669)
+## [Gold Sponsor $500/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2212838)        🏅 🏅 🏅
 
-Be the first [rocking supporter](https://www.patreon.com/bePatron?c=1367395&rid=2211669) ✋
+Be the first [gold sponsor](https://www.patreon.com/bePatron?c=1367395&rid=2212838)   💪 💪 💪 
+
+## [Silver Sponsor $250/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2212827)    🏅🏅
+
+Be the first [silver sponsor](https://www.patreon.com/bePatron?c=1367395&rid=2212827) 💪💪
+
+## [Bronze Sponsor $100/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205976)  🏅
+
+Be the first [bronze sponsor](https://www.patreon.com/bePatron?c=1367395&rid=2205976) 💪
+
+## [Top Supporters $50/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2211669)
+
+Be the first [top supporter](https://www.patreon.com/bePatron?c=1367395&rid=2211669) ✋
 
 ## [Awesome Supporters $25/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205960)
 
