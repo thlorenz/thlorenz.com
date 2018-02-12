@@ -23,7 +23,7 @@ Be the first [platinum sponsor](https://www.patreon.com/bePatron?c=1367395&rid=2
 
 ## [Gold Sponsor $500/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2212838)        🏅 🏅 🏅
 
-Be the first [gold sponsor](https://www.patreon.com/bePatron?c=1367395&rid=2212838)   💪 💪 💪 
+Be the first [gold sponsor](https://www.patreon.com/bePatron?c=1367395&rid=2212838)   💪 💪 💪
 
 ## [Silver Sponsor $250/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2212827)    🏅🏅
 
@@ -39,7 +39,7 @@ Be the first [top supporter](https://www.patreon.com/bePatron?c=1367395&rid=2211
 
 ## [Awesome Supporters $25/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205960)
 
-Be the first [awesome supporter](https://www.patreon.com/bePatron?c=1367395&rid=2205960) 🙋
+- [CodePilot.ai](https://codepilot.ai/) Team
 
 ## [Supporters $10/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205924)
 
