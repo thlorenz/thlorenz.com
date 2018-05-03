@@ -8,7 +8,7 @@ template: thanks.html
 
 Hey, it's me, Thorsten ...
 
-![img](img/portrait-with-support.jpg)
+<img src="img/portrait-with-support.jpg" alt="profile-pic" class="thanks-profile">
 
 I am forever thankful to the following people who pledged to support me.
 

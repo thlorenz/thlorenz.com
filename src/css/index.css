@@ -231,6 +231,13 @@ div.scriptie-talkie-container {
   width: 100% !important;
 }
 
+.thanks-profile {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 /* disqus */
 .comments-link {
   padding-left: 10px;
