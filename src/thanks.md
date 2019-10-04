@@ -39,9 +39,8 @@ Be the first [top supporter](https://www.patreon.com/bePatron?c=1367395&rid=2211
 
 ### [Awesome Supporters $25/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205960)
 
-- [CodePilot.ai](https://codepilot.ai/) Team
+- [VJ with whatisseo.com](https://www.whatisseo.com/)
 
 ### [Supporters $10/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205924)
 
 - Tim Pietrusky
-- Ferross Aboukhadijeh
