@@ -31,15 +31,11 @@ Be the first [silver sponsor](https://www.patreon.com/bePatron?c=1367395&rid=221
 
 ### [Bronze Sponsor $100/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205976)  🏅
 
-- [Browserling](https://www.browserling.com/)
-
 ### [Top Supporters $50/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2211669)
 
 Be the first [top supporter](https://www.patreon.com/bePatron?c=1367395&rid=2211669) ✋
 
 ### [Awesome Supporters $25/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205960)
-
-- [VJ with whatisseo.com](https://www.whatisseo.com/)
 
 ### [Supporters $10/month or more](https://www.patreon.com/bePatron?c=1367395&rid=2205924)
 
