@@ -17,8 +17,15 @@ function sortByDate(a, b) {
   if (a == null) return -1
   if (b == null) return 1
 
-  const date1 = Date(a.date)
-  const date2 = Date(b.date)
+  a = a.date
+  b = b.date
+
+  if (a == null && b == null) return 0
+  if (a == null) return 1
+  if (b == null) return -1
+
+  const date1 = new Date(a.date).getTime()
+  const date2 = new Date(b.date).getTime()
   if (date2 > date1) return -1
   if (date1 > date2) return 1
   return 0

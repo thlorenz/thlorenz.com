@@ -1,6 +1,6 @@
 ---
 title:  Benchmarking Rust Code on OSX 
-date:   Sat Jan 30 2021 14:51:38 
+date:   Sat Jan 30 2021 14:51:38
 tags:   rust, perf
 lunr:   true
 template: post.html
