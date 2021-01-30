@@ -45,7 +45,7 @@ My current vimwiki folder structure looks like this:
 I then include links into dox and blog entries inside the main index page so that I can quickly
 jump back and forth, as an example here are some links into the dox repo.
 
-```md
+```markdown
 ### Admin
 
 - [bash](dox/admin/bash.md)
@@ -69,7 +69,7 @@ It also _conceals_ those links.  Editing those _concealed_ links is hard as you 
 move the cursor inside the actual link in normal mode. Therefore I recommend you to add a quick
 option to toggle the markdown `conceallevel`. To this end I added the following to my `.vimrc`.
 
-```vim
+```viml
 au FileType markdown,vimwiki noremap <leader>mc :call ToggleConcealLevel()<CR>
 function! ToggleConcealLevel()
     if &conceallevel
